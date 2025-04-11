@@ -46,7 +46,7 @@ You are:
 ## Try It Out
 
 - Live version: [Click here](https://jaydeez10.github.io/sfl-calculator/)
-- Or open the `https://jaydeez10.github.io/sfl-calculator/` file in your browser
+- Or open the `index.html` file in your browser
 
 ---
 
