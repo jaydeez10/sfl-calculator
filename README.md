@@ -45,8 +45,8 @@ You are:
 
 ## Try It Out
 
-- Live version: [Click here](https://yourusername.github.io/sunflower-level-calculator/) *(update this link after deploying)*
-- Or open the `index.html` file in your browser
+- Live version: [Click here](https://jaydeez10.github.io/sfl-calculator/)
+- Or open the `https://jaydeez10.github.io/sfl-calculator/` file in your browser
 
 ---
 
