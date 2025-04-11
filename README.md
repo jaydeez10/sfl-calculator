@@ -50,14 +50,6 @@ You are:
 
 ---
 
-## Tech Stack
-
-- **HTML**
-- **Vanilla JavaScript**
-- **CSS** (optional styling for progress bar)
-
----
-
 ## Future Plans
 
 - Add farming XP estimators (e.g., Sunflower = 0.5 XP, Potato = 1 XP, etc.)
