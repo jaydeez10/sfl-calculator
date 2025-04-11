@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sunflower Land Level Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      color: #333;
+    }
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 150px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    th {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sunflower Land Level Calculator</h1>
+
+  <label>Current XP:
+    <input type="number" id="currentXP" value="0">
+  </label>
+
+  <label>Target Level:
+    <input type="number" id="targetLevel" value="2">
+  </label>
+
+  <p id="xpNeededText"></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Consumable</th>
+        <th>XP per Item</th>
+        <th>Items Needed</th>
+      </tr>
+    </thead>
+    <tbody id="resultsBody">
+    </tbody>
+  </table>
+
+  <script>
+    const levelXP = {
+      2: 20, 3: 183, 4: 350, 5: 600, 6: 1000, 7: 1250, 8: 2000, 9: 2500, 10: 3000,
+      11: 3500, 12: 4000, 13: 4500, 14: 5000, 15: 5750, 16: 6500, 17: 7250, 18: 8000,
+      19: 8750, 20: 9750, 21: 10750, 22: 11750, 23: 12750, 24: 13750, 25: 14500
+    };
+
+    const consumables = [
+      { name: "Mashed Potato", xp: 3.63 },
+      { name: "Rhubarb Tart", xp: 6.05 },
+      { name: "Pumpkin Soup", xp: 29.04 },
+      { name: "Boiled Eggs", xp: 108.9 },
+      { name: "Popcorn", xp: 242 },
+      { name: "Kale Stew", xp: 484 },
+      { name: "Gumbo", xp: 726 },
+      { name: "Rice Bun", xp: 3146 },
+      { name: "Pizza Margherita", xp: 30250 },
+      { name: "Sunflower Crunch", xp: 60.5 },
+      { name: "Roast Veggies", xp: 205.7 },
+      { name: "Fruit Salad", xp: 272.25 },
+      { name: "Pancakes", xp: 1210 },
+      { name: "Fish Burger", xp: 1573 },
+      { name: "Beetroot Blaze", xp: 2420 },
+      { name: "Seafood Basket", xp: 2662 },
+      { name: "Bumpkin Roast", xp: 3025 },
+      { name: "Caprese Salad", xp: 7260 },
+      { name: "Spaghetti al Limone", xp: 18150 },
+      { name: "Cheese", xp: 1.21 },
+      { name: "Fancy Fries", xp: 1210 },
+      { name: "Blue Cheese", xp: 7260 },
+      { name: "Shroom Syrup", xp: 12100 },
+      { name: "Honey Cheddar", xp: 18150 },
+      { name: "Sunflower Cake", xp: 635.25 },
+      { name: "Pumpkin Cake", xp: 756.25 },
+      { name: "Carrot Cake", xp: 907.5 },
+      { name: "Wheat Cake", xp: 1331 },
+      { name: "Honey Cake", xp: 4840 },
+      { name: "Lemon Cheesecake", xp: 36300 }
+    ];
+
+    function updateTable() {
+      const currentXP = parseInt(document.getElementById("currentXP").value) || 0;
+      const targetLevel = parseInt(document.getElementById("targetLevel").value) || 2;
+      const targetXP = levelXP[targetLevel] || 0;
+      const xpNeeded = Math.max(0, targetXP - currentXP);
+
+      document.getElementById("xpNeededText").innerText = `XP needed to reach level ${targetLevel}: ${xpNeeded}`;
+
+      const tableBody = document.getElementById("resultsBody");
+      tableBody.innerHTML = "";
+
+      consumables.forEach(item => {
+        const amount = xpNeeded > 0 ? Math.ceil(xpNeeded / item.xp) : 0;
+        const row = `<tr>
+                      <td>${item.name}</td>
+                      <td>${item.xp}</td>
+                      <td>${amount}</td>
+                    </tr>`;
+        tableBody.innerHTML += row;
+      });
+    }
+
+    document.getElementById("currentXP").addEventListener("input", updateTable);
+    document.getElementById("targetLevel").addEventListener("input", updateTable);
+
+    updateTable();
+  </script>
+</body>
+</html>
